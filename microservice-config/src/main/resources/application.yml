@@ -1,0 +1,15 @@
+server:  
+  port: 8762
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/lijl5/spring-cloud-config.git
+          username: 657410669@qq.com
+          password: Ljl0715.
+      label: master    # 配置仓库的分支
+
+  

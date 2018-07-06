@@ -1,0 +1,12 @@
+# 环境配置  dev|pro
+profile: dev
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8762
+      profile: ${profile}
+      label: master   # 当configserver的后端存储是Git时，默认就是master 
+  application:
+    name: zipkinServer
+    
