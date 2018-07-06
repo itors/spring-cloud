@@ -7,7 +7,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan("com.asiainfo.mapper")
+//此注解表示动态扫描DAO接口所在包
+@MapperScan("com.asiainfo.dao")
 public class UserApp {
 	
 	public static void main(String[] args) {
