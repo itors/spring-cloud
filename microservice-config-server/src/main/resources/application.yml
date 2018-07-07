@@ -11,5 +11,7 @@ spring:
           username: 657410669@qq.com
           password: Ljl0715.
       label: master    # 配置仓库的分支
+encrypt:
+  key: sang
 
   

@@ -1,0 +1,6 @@
+encrypt:
+  key-store:
+    location: config-server.keystore
+    alias: config-server
+    password: zaq12wsx
+    secret: zaq12wsx
