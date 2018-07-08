@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.asiainfo.dao.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.itors.eshop.pojo.Order" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="or_id" property="orId" jdbcType="VARCHAR" />
+    <result column="prod_id" property="prodId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="create_dt" property="createDt" jdbcType="TIMESTAMP" />
+    <result column="or_state" property="orState" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, or_id, prod_id, user_id, create_dt, or_state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.itors.eshop.pojo.Order" >
+    insert into order (id, or_id, prod_id, 
+      user_id, create_dt, or_state
+      )
+    values (#{id,jdbcType=INTEGER}, #{orId,jdbcType=VARCHAR}, #{prodId,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{createDt,jdbcType=TIMESTAMP}, #{orState,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.itors.eshop.pojo.Order" >
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orId != null" >
+        or_id,
+      </if>
+      <if test="prodId != null" >
+        prod_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="createDt != null" >
+        create_dt,
+      </if>
+      <if test="orState != null" >
+        or_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orId != null" >
+        #{orId,jdbcType=VARCHAR},
+      </if>
+      <if test="prodId != null" >
+        #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createDt != null" >
+        #{createDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orState != null" >
+        #{orState,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itors.eshop.pojo.Order" >
+    update order
+    <set >
+      <if test="orId != null" >
+        or_id = #{orId,jdbcType=VARCHAR},
+      </if>
+      <if test="prodId != null" >
+        prod_id = #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createDt != null" >
+        create_dt = #{createDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orState != null" >
+        or_state = #{orState,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itors.eshop.pojo.Order" >
+    update order
+    set or_id = #{orId,jdbcType=VARCHAR},
+      prod_id = #{prodId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      create_dt = #{createDt,jdbcType=TIMESTAMP},
+      or_state = #{orState,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

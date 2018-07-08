@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itor.eShop.dao.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.itors.eshop.pojo.Account" >
+    <id column="acc_id" property="accId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="balance" property="balance" jdbcType="DOUBLE" />
+    <result column="create_dt" property="createDt" jdbcType="TIMESTAMP" />
+    <result column="update_dt" property="updateDt" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    acc_id, user_id, balance, create_dt, update_dt
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from account
+    where acc_id = #{accId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from account
+    where acc_id = #{accId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.itors.eshop.pojo.Account" >
+    insert into account (acc_id, user_id, balance, 
+      create_dt, update_dt)
+    values (#{accId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{balance,jdbcType=DOUBLE}, 
+      #{createDt,jdbcType=TIMESTAMP}, #{updateDt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itors.eshop.pojo.Account" >
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accId != null" >
+        acc_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="balance != null" >
+        balance,
+      </if>
+      <if test="createDt != null" >
+        create_dt,
+      </if>
+      <if test="updateDt != null" >
+        update_dt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accId != null" >
+        #{accId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=DOUBLE},
+      </if>
+      <if test="createDt != null" >
+        #{createDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDt != null" >
+        #{updateDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itors.eshop.pojo.Account" >
+    update account
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null" >
+        balance = #{balance,jdbcType=DOUBLE},
+      </if>
+      <if test="createDt != null" >
+        create_dt = #{createDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDt != null" >
+        update_dt = #{updateDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where acc_id = #{accId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itors.eshop.pojo.Account" >
+    update account
+    set user_id = #{userId,jdbcType=INTEGER},
+      balance = #{balance,jdbcType=DOUBLE},
+      create_dt = #{createDt,jdbcType=TIMESTAMP},
+      update_dt = #{updateDt,jdbcType=TIMESTAMP}
+    where acc_id = #{accId,jdbcType=INTEGER}
+  </update>
+</mapper>

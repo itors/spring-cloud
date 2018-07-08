@@ -1,0 +1,6 @@
+server:
+  port: ${userServer1Port}
+    
+
+
+
