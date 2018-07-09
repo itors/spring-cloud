@@ -1,5 +1,7 @@
 package com.itors.eshop.service;
 
-public interface IOrderService {
+import com.itors.eshop.pojo.UserInfo;
 
+public interface IOrderService {
+	public UserInfo login();
 }

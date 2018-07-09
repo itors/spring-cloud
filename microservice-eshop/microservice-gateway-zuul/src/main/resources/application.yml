@@ -1,2 +1,27 @@
 server:
   port: ${zuulServerPort}
+spring:
+  application:
+    name: zuulServer
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      percentage: 1.0
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:${eurekaServerPort}/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    lease-renewal-interval-in-seconds: 10
+zuul:
+  routes:
+    userServer: /user/**
+    movieServer: /movie/**
+    orderServer: /order/**
+    prodServer: /prod/**
+    accountServer: /account/**

@@ -1,3 +1,36 @@
-
 server:
-  port: ${movieServerPort}
+  port: 9400
+spring:
+  application:
+    name: movieServer
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      percentage: 1.0
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    lease-renewal-interval-in-seconds: 10
+microservice-user:
+  ribbon:
+    #connectTimeOut: 25000
+    #ReadTimeOut: 10000
+    #OkToRetryOnAllOperation: true
+    #MaxAutoRetriesNextServer: 2
+    #MaxAutoRetries: 1
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+logging:
+  level:
+    com.asiainfo.feign: debug
+  

@@ -1,8 +1,8 @@
 server:
-  port: 9300
+  port: 9100
 spring: 
   application:
-    name: orderServer
+    name: accountServer
   datasource:
     url: jdbc:mysql://localhost:3306/teacherIntegratEval?useSSL=false
     username: root
