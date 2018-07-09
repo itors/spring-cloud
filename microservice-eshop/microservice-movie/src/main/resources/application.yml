@@ -22,14 +22,14 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
     lease-renewal-interval-in-seconds: 10
-microservice-user:
-  ribbon:
-    #connectTimeOut: 25000
-    #ReadTimeOut: 10000
-    #OkToRetryOnAllOperation: true
-    #MaxAutoRetriesNextServer: 2
-    #MaxAutoRetries: 1
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#microservice-user:
+#  ribbon:
+#    #connectTimeOut: 25000
+#    #ReadTimeOut: 10000
+#    #OkToRetryOnAllOperation: true
+#    #MaxAutoRetriesNextServer: 2
+#    #MaxAutoRetries: 1
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 logging:
   level:
     com.asiainfo.feign: debug

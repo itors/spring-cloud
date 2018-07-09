@@ -1,5 +1,5 @@
 server:
-  port: ${zuulServerPort}
+  port: 8766
 spring:
   application:
     name: zuulServer
@@ -13,7 +13,7 @@ eureka:
     healthcheck:
       enabled: true
     serviceUrl:
-      defaultZone: http://localhost:${eurekaServerPort}/eureka
+      defaultZone: http://localhost:8761/eureka
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
@@ -25,3 +25,10 @@ zuul:
     orderServer: /order/**
     prodServer: /prod/**
     accountServer: /account/**
+ribbon:
+    connectTimeOut: 25000
+    ReadTimeOut: 10000
+    OkToRetryOnAllOperation: true
+    MaxAutoRetriesNextServer: 2
+    MaxAutoRetries: 1
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
