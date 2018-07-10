@@ -16,7 +16,7 @@ spring:
 logging:
   level:
     root: INFO
-    com.asiainfo.mapper: DEBUG
+    com.itors.eshop.mapper: DEBUG
 eureka:
   client:
     healthcheck:

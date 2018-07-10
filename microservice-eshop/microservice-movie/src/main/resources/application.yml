@@ -32,5 +32,5 @@ microservice-user:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 logging:
   level:
-    com.asiainfo.feign: debug
+    com.itors.eshop.feign: debug
   
