@@ -28,10 +28,18 @@ zuul:
     orderServer: /order/**
     prodServer: /prod/**
     accountServer: /account/**
-ribbon:
+userServer:
+  ribbon:
     connectTimeOut: 25000
     ReadTimeOut: 10000
     OkToRetryOnAllOperation: true
     MaxAutoRetriesNextServer: 2
     MaxAutoRetries: 1
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#ribbon:
+#    connectTimeOut: 25000
+#    ReadTimeOut: 10000
+#    OkToRetryOnAllOperation: true
+#    MaxAutoRetriesNextServer: 2
+#    MaxAutoRetries: 1
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
