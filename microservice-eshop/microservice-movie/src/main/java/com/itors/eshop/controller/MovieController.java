@@ -29,15 +29,15 @@ public class MovieController {
 	public String findById(@PathVariable Long id) {
 		// http://localhost:7900/simple/
 		// VIP virtual IP
-		ServiceInstance serviceInstance = this.loadBalancerClient.choose("microservice-user");
+		ServiceInstance serviceInstance = this.loadBalancerClient.choose("userServer");
 		 System.out.println("===" + ":" + serviceInstance.getServiceId() + ":"
 		 + serviceInstance.getHost() + ":" + serviceInstance.getPort());
-		return this.restTemplateUser.getForObject("http://microservice-user/simple/" + id, String.class);
+		return this.restTemplateUser.getForObject("http://userServer/simple/" + id, String.class);
 	}
 
 	@GetMapping("/test")
 	public String test() {
-		ServiceInstance serviceInstance = this.loadBalancerClient.choose("microservice-user");
+		ServiceInstance serviceInstance = this.loadBalancerClient.choose("userServer");
 		System.out.println("111" + ":" + serviceInstance.getServiceId() + ":" + serviceInstance.getHost() + ":"
 				+ serviceInstance.getPort());
 		return "1";

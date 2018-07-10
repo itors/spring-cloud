@@ -1,6 +1,34 @@
 server:
-  port: ${userServer1Port}
-    
-
-
+  port: 9101
+spring: 
+  application:
+    name: userServer
+  datasource:
+    url: jdbc:mysql://localhost:3306/eshop?useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      percentage: 1.0
+logging:
+  level:
+    root: INFO
+    com.itors.eshop.mapper: DEBUG
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    lease-renewal-interval-in-seconds: 10
+#配置.xml文件路径
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.itors.eshop.pojo #配置模型路径
 

@@ -15,12 +15,12 @@ public class ZuulApplication {
     SpringApplication.run(ZuulApplication.class, args);
   }
   
-  @Bean
-  public ZuulFilterPre zuulFilterPre(){
-	  return new ZuulFilterPre();
-  }
-  @Bean
-  public ZuulFilterError zuulFilterError(){
-	  return new ZuulFilterError();
-  }
+//  @Bean
+//  public ZuulFilterPre zuulFilterPre(){
+//	  return new ZuulFilterPre();
+//  }
+//  @Bean
+//  public ZuulFilterError zuulFilterError(){
+//	  return new ZuulFilterError();
+//  }
 }

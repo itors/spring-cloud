@@ -4,7 +4,7 @@ spring:
   application:
     name: orderServer
   datasource:
-    url: jdbc:mysql://localhost:3306/teacherIntegratEval?useSSL=false
+    url: jdbc:mysql://localhost:3306/eshop?useSSL=false
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
