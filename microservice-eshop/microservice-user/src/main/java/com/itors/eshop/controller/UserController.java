@@ -25,8 +25,14 @@ public class UserController {
 	}
 	@GetMapping("/test")
 	public Object loadBlanceTest(){
+		System.out.println("serServer 1:request is comming....");
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			 System.out.println("线程被打断... " + e.getMessage());
+			e.printStackTrace();
+		}
 		return "this userServer 1";
-				
 	}
 
 }

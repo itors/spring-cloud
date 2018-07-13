@@ -2,7 +2,7 @@ server:
   port: 9400
 spring:
   application:
-    name: movieServer
+    name: movie-service
   cloud:
     loadbalancer:
       retry:

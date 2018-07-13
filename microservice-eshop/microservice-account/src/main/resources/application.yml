@@ -2,7 +2,7 @@ server:
   port: 9200
 spring: 
   application:
-    name: accountServer
+    name: account-service
   datasource:
     url: jdbc:mysql://localhost:3306/eshop?useSSL=false
     username: root

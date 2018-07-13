@@ -3,7 +3,7 @@
 # eureka.client.serviceUrl.defaultZone ：设置与Eureka Server交互的地址，查询服务和注册服务都需要依赖这个地址。默认是http://localhost:8761/eureka ；多个地址可使用 , 分隔。  
 spring:
   application:
-    name: eurekaServer
+    name: eureka-service
 server:  
   port: 8761
 eureka:  
@@ -13,4 +13,4 @@ eureka:
     service-url:  
       defaultZone: http://localhost:8761/eureka
   server:
-    enable-self-preservation: true  #关闭自我保护机制 从而保证会注销微服务
+    enable-self-preservation: false  #关闭自我保护机制 从而保证会注销微服务

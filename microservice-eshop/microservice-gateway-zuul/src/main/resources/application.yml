@@ -2,7 +2,7 @@ server:
   port: 8766
 spring:
   application:
-    name: zuulServer
+    name: zuul-service
   zipkin:
     base-url: http://localhost:9411
   sleuth:
@@ -18,28 +18,36 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
     lease-renewal-interval-in-seconds: 10
-feign:
-  hystrix:
-    enabled: true
-zuul:
-  routes:
-    userServer: /user/**
-    movieServer: /movie/**
-    orderServer: /order/**
-    prodServer: /prod/**
-    accountServer: /account/**
-userServer:
-  ribbon:
-    connectTimeOut: 25000
-    ReadTimeOut: 10000
-    OkToRetryOnAllOperation: true
-    MaxAutoRetriesNextServer: 2
-    MaxAutoRetries: 1
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-#ribbon:
-#    connectTimeOut: 25000
-#    ReadTimeOut: 10000
-#    OkToRetryOnAllOperation: true
-#    MaxAutoRetriesNextServer: 2
-#    MaxAutoRetries: 1
-#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true  #该参数用来开启重试机制
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000  #断路器的超时时间,断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试。
+#这里记录一下：
+# ReadTimeout   为从服务器读取到可用资源所用的时间  
+# ConnectTimeout  指的是建立连接所用的时间 
+# MaxAutoRetries  对当前实例的重试次数
+# MaxAutoRetriesNextServer  切换相同Server的次数(譬如：5太服务集群，此值为2，就是重试除当前实例外的另外两台实例)
+# OkToRetryOnAllOperations  对所有请求都做重试
+# 整个 zuul 路由花费的时间为   请求服务实例数*每个实例请求次数*每次请求的花费时间 即：
+#（MaxAutoRetriesNextServer+1）*（MaxAutoRetries+1）*（ConnectTimeout+ReadTimeout）
+# MaxAutoRetriesNextServer+1 是因为 需要加上首次请求的服务节点
+# MaxAutoRetries+1 是因为首次访问 服务节点
+# 因为断路器设置了 超时时间为6000ms 所以这里上面所示式子结果不应超过 6000ms 否则断路器无效
+ribbon:
+  OkToRetryOnAllOperations: true
+  ReadTimeout: 6000
+  ConnectTimeout: 500
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+#zuul:
+#  routes:
+#    user-service: /user/**
+#    movie-service: /movie/**
+#    order-service: /order/**
+#    prod-service: /prod/**
+#    account-service: /account/**
