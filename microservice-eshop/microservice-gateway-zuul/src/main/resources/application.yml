@@ -44,10 +44,10 @@ ribbon:
   ConnectTimeout: 500
   MaxAutoRetries: 1
   MaxAutoRetriesNextServer: 2
-#zuul:
-#  routes:
-#    user-service: /user/**
-#    movie-service: /movie/**
-#    order-service: /order/**
-#    prod-service: /prod/**
-#    account-service: /account/**
+zuul:
+  routes:
+    user-service: /user/**
+    movie-service: /movie/**
+    order-service: /order/**
+    prod-service: /prod/**
+    account-service: /account/**
