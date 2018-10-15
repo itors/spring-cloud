@@ -88,4 +88,4 @@ CREATE TABLE `user_info` (
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('100001', 'admin', '1', '15611673980', '李金磊', '100001', '2018-07-07 21:01:02', '0');
+INSERT INTO `user_info` VALUES ('100001', 'admin', '1', '1560000000', 'admin', '100001', '2018-07-07 21:01:02', '0');
