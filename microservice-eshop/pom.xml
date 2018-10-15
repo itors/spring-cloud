@@ -49,7 +49,25 @@
 			<artifactId>spring-cloud-starter-zipkin</artifactId>
 			<version>RELEASE</version>
 		</dependency>-->
-
+		
+		
+		<!-- mybatis  -->
+		<dependency>
+			<groupId>com.itors</groupId>
+			<artifactId>microservice-common-pojo</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.itors</groupId>
+			<artifactId>microservice-common-mapper</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<!-- 工具类  -->
+		<dependency>
+			<groupId>com.itors</groupId>
+			<artifactId>microservice-common-util</artifactId>
+			<version>0.0.1</version>
+		</dependency>
 	</dependencies>
 
 	<!-- <modules> <module>microservice-discovery-eureka</module> <module>microservice-user</module> 

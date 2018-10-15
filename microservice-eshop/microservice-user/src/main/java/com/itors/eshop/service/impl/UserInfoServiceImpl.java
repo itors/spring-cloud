@@ -3,7 +3,7 @@ package com.itors.eshop.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.itors.eshop.dao.UserInfoMapper;
+import com.itors.eshop.dao.UserInfoDAO;
 import com.itors.eshop.pojo.UserInfo;
 import com.itors.eshop.service.IUserInfoService;
 /**
@@ -14,9 +14,9 @@ import com.itors.eshop.service.IUserInfoService;
 @Service
 public class UserInfoServiceImpl implements IUserInfoService{
 	@Autowired
-	private UserInfoMapper userDao;
+	private UserInfoDAO userDao;
 	
-	public UserInfo loginDo(UserInfo userInfo){
-		return userDao.selectByPrimaryKey(userInfo.getUserId());
+	public UserInfo login(UserInfo userInfo){
+		return userDao.login(userInfo.getUserId());
 	}
 }

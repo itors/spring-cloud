@@ -15,11 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.itors.eshop.cache.impl.RedisHandle;
 
 @RestController
-public class RedisTestController {
+public class CacheTestController {
 	private final Logger logger = Logger.getLogger(getClass());
 	 
-	@Autowired
-	private RedisTemplate redisTemplate;
 	
 	@Autowired
 	private RedisHandle redisHandle;
@@ -34,19 +32,6 @@ public class RedisTestController {
     
 	@GetMapping("/hello")
     public String sayHi(@RequestParam String name){
-//		 //从缓存中获取城市信息
-//        String key = name;
-//        ValueOperations<String, String> operations = redisTemplate.opsForValue();
-//        //缓存存在
-//        boolean hasKey = redisTemplate.hasKey(key);
-//        if (hasKey) {
-//        	String userName = operations.get(key);
-//        	logger.info(" 从缓存中获取了姓名 >> " + userName);
-//            return userName;
-//		}
-//        //缓存不存在，将数据存入缓存
-//        operations.set("city", name, 100000, TimeUnit.SECONDS);
-//        logger.info("CityServiceImpl.findCityById() : 城市插入缓存 >>  " +name);
 		
 		boolean flag = redisHandle.exists(name);
 		if(flag){

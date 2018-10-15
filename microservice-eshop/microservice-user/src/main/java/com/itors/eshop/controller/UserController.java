@@ -20,7 +20,7 @@ public class UserController {
 	public Object login(){
 		UserInfo userInfo = new UserInfo();
 		userInfo.setUserId(100001);
-		return userInfoService.loginDo(userInfo);
+		return userInfoService.login(userInfo);
 				
 	}
 	@GetMapping("/test")
